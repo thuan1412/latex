@@ -17,7 +17,6 @@
 
 \frame{\titlepage}
 
-\section{Table of contents}
 \begin{frame}
 \frametitle{Table of contents}
 \tableofcontents
@@ -27,7 +26,7 @@
 \begin{frame}
 	\frametitle{Introduction}
 	\begin{itemize}
- 		\item Deep factorization machine is SOTA in Click Through Rate probasdalem.
+ 		\item Deep factorization machine is SOTA in Click Through Rate problem.
  		\item DeepFM makes a good result on Zalo Hit Song Challenge.
 	\end{itemize}
 \end{frame}
@@ -38,19 +37,25 @@
 	\frametitle{Problem statement}
 	Deep FM is build based on FM. \\
 	Suppose we have a dataset. \\
-	\begin{center}
-		\begin{tabular}{|c|c|c|c|}
-			\hline Clicked & Publisher(P) & Advertiser(A) & Gender(G) \\
-			\hline Yes & ESPN & Nike & Male \\
-			\hline No & NBC & Adidas & Male \\ \hline
-		\end{tabular}
-	\end{center}
-		
+	\includegraphics[scale=0.35]{data} \\
+	where:
+	\begin{itemize}
+		\item X $\in R^{m \times n}$ 
+		\item m is number of observations, $n = n_{user} + n_{item} + n_T$ 
+		\item $x$ is feature vector, $v \int$
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Logistic model and limitation}
-	Apply Logistic algorithm.
+	\frametitle{Result of FM}
+	\begin{figure}
+		\includegraphics[scale=0.5]{fm_result}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Polynomial model and limitation}
+	Apply polynomial( linear regresson).
 	\begin{equation}
 		\sigma = w_{0} + \sum_{i=1}^{n} w_{i} x_{i} 
 	\end{equation}
@@ -60,7 +65,7 @@
 		\item[$w_i$] is weight of field i
 		\item[$x_i$] is feature vector of field i 	
 	\end{description}	
-	Logistic algorithm does not get combination features. \\
+	Polynomial does not use combination of features. \\
 	Can not get the interaction between features.
 \end{frame}
 
@@ -80,8 +85,9 @@
 		\item[$\hat{w}_{i,j} =n<v_i, v_j>$] is interaction between the i-th and j-th variable.
 	\end{description}
 \end{frame}
-\section{Deep Facterization Machine}
+\section{Deep Factorization Machine}
 \frame{\tableofcontents[currentsection]}
+\subsection{Introduction to Deep Factorization Machine}
 \begin{frame}	
 	\frametitle{Factorization Machine Layer}	
 	Intergrate the architecture of FM and deep neural networks.	
@@ -102,7 +108,23 @@
 		\includegraphics[scale=0.25]{deep}
 		\caption{DNN layer in DeepFM model}
 	\end{figure}
-	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Full DeepFM architecture}
+	\begin{figure}
+		\includegraphics[scale=0.25]{full_deepFM}
+		\caption{Wide \& deep architecture of DeepFM.}
+	\end{figure}
+	Need to add a part same as Wide\& Deep's wide part.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Full DeepFM architecture}
+	\begin{figure}
+		\includegraphics[scale=0.16]{custom_deepFM}
+		\caption{Wide \& deep architecture of DeepFM.}
+	\end{figure}
 \end{frame}
 
 \subsection{Compare to Wide\&Deep}
@@ -129,6 +151,13 @@
 		\hline Low-order feature & \checkmark & \checkmark \\
 		\hline No feature engineering & \checkmark & x \\ \hline
 	\end{tabular}}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Experiments}
+	\begin{figure}
+		\includegraphics[scale=0.5]{experiment}
+	\end{figure}
 \end{frame}
 
 \section{References}
